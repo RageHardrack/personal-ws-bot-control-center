@@ -17,7 +17,16 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./bot-volume:/app/bot_sessions
+      - ./bot-volume-daniel:/app/bot_sessions
+
+  bot-rafael:
+    image: hardrack/personal-ws-bot:latest
+    restart: always
+    container_name: bot-rafael
+    ports:
+      - 3001:3000
+    volumes:
+      - ./bot-volume-rafael:/app/bot_sessions
 
 networks:
   personal_ws_bots:
