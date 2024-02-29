@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - bot-daniel
+
+  bot-daniel:
+    image: hardrack/personal-ws-bot:latest
+    restart: always
+    container_name: bot-daniel
+    ports:
+      - 3000:3000
+    volumes:
+      - ./bot-volume:/app/bot_sessions
+
+networks:
+  personal_ws_bots:
