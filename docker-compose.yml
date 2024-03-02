@@ -18,7 +18,7 @@ services:
       - ./certbot-var:/var/lib/letsencrypt
       - ./certbot.conf:/etc/nginx/conf.d/certbot.conf
       - ./certbot-webroot:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d yourdomain.com -d www.yourdomain.com
+    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d vps-3247232-x.dattaweb.com -d www.vps-3247232-x.dattaweb.com
     depends_on:
       - nginx
 
