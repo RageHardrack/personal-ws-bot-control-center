@@ -5,8 +5,11 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certbot-etc:/etc/letsencrypt
+      - ./certbot-var:/var/lib/letsencrypt
     depends_on:
       - bot-daniel
       - bot-rafael
@@ -16,9 +19,8 @@ services:
     volumes:
       - ./certbot-etc:/etc/letsencrypt
       - ./certbot-var:/var/lib/letsencrypt
-      - ./certbot.conf:/etc/nginx/conf.d/certbot.conf
       - ./certbot-webroot:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d vps-3247232-x.dattaweb.com -d www.vps-3247232-x.dattaweb.com
+    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d www.vps-3247232-x.dattaweb.com
     depends_on:
       - nginx
 
