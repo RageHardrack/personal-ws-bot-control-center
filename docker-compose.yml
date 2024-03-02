@@ -11,6 +11,17 @@ services:
       - bot-daniel
       - bot-rafael
 
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot-etc:/etc/letsencrypt
+      - ./certbot-var:/var/lib/letsencrypt
+      - ./certbot.conf:/etc/nginx/conf.d/certbot.conf
+      - ./certbot-webroot:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d yourdomain.com -d www.yourdomain.com
+    depends_on:
+      - nginx
+
   bot-daniel:
     image: hardrack/personal-ws-bot:latest
     restart: always
