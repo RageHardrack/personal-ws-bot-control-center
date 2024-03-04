@@ -1,2 +1,10 @@
+# Dependencies
 node_modules/
+
+# Volumes
 bot-volume/
+bot-volume-*/
+
+# Certbot
+certbot-webroot/
+certbot-etc
