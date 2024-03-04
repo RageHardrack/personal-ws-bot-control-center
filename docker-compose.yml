@@ -14,15 +14,17 @@ services:
       - bot-daniel
       - bot-rafael
 
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./certbot-etc:/etc/letsencrypt
-      - ./certbot-var:/var/lib/letsencrypt
-      - ./certbot-webroot:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d www.vps-3247232-x.dattaweb.com
-    depends_on:
-      - nginx
+  # ! Disabled for now, until I find out how to deploy SSL
+  # TODO: Complete SSL
+  # certbot:
+  #   image: certbot/certbot
+  #   volumes:
+  #     - ./certbot-etc:/etc/letsencrypt
+  #     - ./certbot-var:/var/lib/letsencrypt
+  #     - ./certbot-webroot:/var/www/certbot
+  #   command: certonly --webroot --webroot-path=/var/www/certbot --agree-tos --no-eff-email --staging -d www.vps-3247232-x.dattaweb.com
+  #   depends_on:
+  #     - nginx
 
   bot-daniel:
     image: hardrack/personal-ws-bot:latest
