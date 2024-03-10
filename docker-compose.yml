@@ -31,6 +31,8 @@ services:
       - 3000:3000
     volumes:
       - ./bot-volume-daniel:/app/bot_sessions
+    networks:
+      - ws-bots-network
 
   bot-rafael:
     image: hardrack/personal-ws-bot:latest
@@ -40,6 +42,9 @@ services:
       - 3001:3000
     volumes:
       - ./bot-volume-rafael:/app/bot_sessions
+    networks:
+      - ws-bots-network
 
 networks:
-  personal_ws_bots:
+  ws-bots-network:
+    driver: bridge
