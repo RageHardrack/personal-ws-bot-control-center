@@ -6,5 +6,4 @@ bot-volume/
 bot-volume-*/
 
 # Certbot
-certbot-webroot/
-certbot-etc
+certbot-*/
